@@ -3,7 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import _ from "lodash";
 import mongoose from "mongoose";
-mongoose.connect("mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@cluster0.ze4y6ft.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@cluster0.ze4y6ft.mongodb.net/TodolistDB");
 
 const app = express();
 const port = 3000;
