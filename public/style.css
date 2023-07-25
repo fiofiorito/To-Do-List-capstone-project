@@ -1,0 +1,135 @@
+/* Colors: #EDF2FB #D7E3FC #C1D3FE #ABC4FF #7099FF #000C29
+https://coolors.co/edf2fb-d7e3fc-c1d3fe-abc4ff-7099ff-000c29
+
+font-family: 'Lexend', sans-serif;
+ */
+
+body {
+    margin: 0 auto;
+    background-color: #EDF2FB;
+    color: #000C29;
+    font-family: 'Lexend', Calibri, sans-serif;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+/* nav bar */
+nav {
+    /* border: 1px solid pink; */
+    padding: 0 1rem;
+}
+
+.nav-bar {
+    /* border: 1px solid green; */
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 1.125rem 0;
+    font-weight: 200;
+    position: relative;
+    z-index: 1;
+}
+
+.nav-bar-list {
+    /* border: 1px solid red; */
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0 1rem;
+    margin: 0;
+}
+
+.nav-bar-link {
+    color: #000C29;
+    text-decoration: none;
+}
+
+/* notepad */
+.notepad-parent {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notepad {
+    background-color: #fff;
+    width: 20rem;
+    border-radius: 20px;
+    box-shadow: 0px 1px 10px #d7e3fc;
+}
+
+.notepad-title {
+    background-color: #7099FF;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    /* border-radius: 20px; */
+    box-shadow: 0px 2px 10px #d7e3fc;
+    padding: 1.5rem 0;
+}
+
+.notepad-title-h1 {
+    text-align: center;
+    color: #EDF2FB;
+
+}
+
+/* notepad tasks */
+.list-item {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    color: #000C29;
+    padding: 1.5rem 2rem 1.5rem 1rem;
+    background: transparent;
+    font-size: 1rem;
+    border-bottom: 1px solid #d7e3fc41;
+}
+
+.list-item input[type="checkbox"] {
+    margin: 0;
+    width: 1rem;
+}
+
+.list-item p {
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: 1.25rem;
+    width: 88%;
+}
+
+input[type="text"] {
+    /* border: 1px solid violet; */
+    border: none;
+    font-size: 1.25rem;
+}
+
+button[type="submit"] {
+    background-color: #7099FF;
+    padding: 0.5rem 0.9rem;
+    border: none;
+    border-radius: 100px;
+    color: #EDF2FB;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+input:checked+p {
+    text-decoration: line-through;
+    text-decoration-color: #7099FF;
+}
+
+/* footer */
+footer {
+    /* border: 1px solid green; */
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 200;
+    width: 100vw;
+    position: absolute;
+    bottom: 0.5rem;
+}
