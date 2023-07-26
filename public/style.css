@@ -82,6 +82,7 @@ nav {
     /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: #000C29;
     padding: 1.5rem 2rem 1.5rem 1rem;
     background: transparent;
@@ -105,6 +106,7 @@ input[type="text"] {
     /* border: 1px solid violet; */
     border: none;
     font-size: 1.25rem;
+    width: 75%;
 }
 
 button[type="submit"] {
@@ -115,7 +117,7 @@ button[type="submit"] {
     color: #EDF2FB;
     font-weight: 600;
     font-size: 1.5rem;
-    margin-right: 1rem;
+
 }
 
 input:checked+p {
