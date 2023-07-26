@@ -115,6 +115,7 @@ button[type="submit"] {
     color: #EDF2FB;
     font-weight: 600;
     font-size: 1.5rem;
+    margin-right: 1rem;
 }
 
 input:checked+p {
@@ -132,4 +133,17 @@ footer {
     width: 100vw;
     position: absolute;
     bottom: 0.5rem;
+}
+
+@media (min-width: 700px) {
+    button[type="submit"] {
+        background-color: #7099FF;
+        padding: 0.5rem 0.9rem;
+        border: none;
+        border-radius: 100px;
+        color: #EDF2FB;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+
 }
