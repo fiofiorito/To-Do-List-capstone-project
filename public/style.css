@@ -106,7 +106,8 @@ input[type="text"] {
     /* border: 1px solid violet; */
     border: none;
     font-size: 1.25rem;
-    width: 75%;
+    width: 90%;
+    padding-left: 0.7rem;
 }
 
 button[type="submit"] {
