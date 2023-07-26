@@ -12,4 +12,4 @@ I created a to do list from scratch without following any tutorials. This was a 
 4. Created post routes for index.ejs
 5. Did CRUD (create, read and delete, no update) on the list items that are stored in the db
 6. Tested to see if everything works
-7. Styled the responsiveness for tablet and laptop viewports (originally mobile responsive)
+7. Deployment on render.com
