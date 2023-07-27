@@ -7,6 +7,7 @@ mongoose.connect("mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_P
 
 const app = express();
 const port = 3000;
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -15,26 +16,27 @@ const itemsSchema = new mongoose.Schema({
 });
 const Item = mongoose.model('Item', itemsSchema);
 
-// const listSchema = new mongoose.Schema({
-//     name: String,
-//     items: [itemsSchema]
-// });
+const listSchema = new mongoose.Schema({
+    name: String,
+    items: [itemsSchema]
+});
 
-// const List = mongoose.model('List', listSchema);
+const List = mongoose.model('List', listSchema);
 
 const item1 = new Item({
-    name: "Welcome to your to do list!"
+    name: "Modo de uso: Escribi tu nombre al final de la url"
 });
 
 const item2 = new Item({
-    name: "Click '+' to add a task"
+    name: "Importante! Agregar \"/\" antes de tu nombre"
 });
 
 const item3 = new Item({
-    name: "To delete check the box!"
+    name: "Ejemplo: \"https://url/fio\""
 });
 
 const defaultItems = [item1, item2, item3]
+const newListName = "";
 
 app.get("/", (req, res) => {
     Item.find()
@@ -50,23 +52,35 @@ app.get("/", (req, res) => {
                     });
                 res.redirect("/");
             } else {
-                console.log(items.length);
-                res.render("index.ejs", { newListItems: items, itemName: req.body.newItem });
+                // console.log(items.length);
+                res.render("index", { listName: newListName, newListItems: items });
             }
         });
 });
 
 app.post("/", (req, res) => {
     const itemName = req.body.newItem;
+    const listName = req.body.list;
     const newItem = new Item({
         name: itemName
     });
-    newItem.save();
-    res.redirect("/");
+    if (listName === newListName) {
+        newItem.save();
+        res.redirect("/");
+    } else {
+        List.findOne({ name: listName })
+            .then((foundList) => {
+                foundList.items.push(newItem);
+                foundList.save();
+                res.redirect("/" + listName);
+            });
+    }
 });
 
 app.post("/delete", (req, res) => {
     const checkedItem = req.body.checkbox;
+    const listName = req.body.listName;
+
     Item.deleteOne({ _id: checkedItem })
         .then(function (err) {
             if (err) {
@@ -75,9 +89,41 @@ app.post("/delete", (req, res) => {
                 console.log("success");
             }
         });
-    res.redirect("/");
-})
 
+    if (listName === newListName) {
+        res.redirect("/");
+    } else {
+        List.findOneAndUpdate({ name: listName }, { $pull: { items: { _id: checkedItem } } })
+            .then(function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log('successful redirect');
+                }
+                res.redirect("/" + listName);
+            })
+
+    }
+});
+
+app.get("/:customListName", (req, res) => {
+    const customListName = _.kebabCase(req.params.customListName);
+
+    List.findOne({ name: customListName })
+        .then(function (foundList) {
+            if (!foundList) {
+                const newList = new List({
+                    name: customListName,
+                    items: defaultItems
+                });
+                newList.save();
+                res.redirect("/" + customListName);
+
+            } else {
+                res.render("index", { listName: foundList.name, newListItems: foundList.items });
+            }
+        });
+});
 
 
 

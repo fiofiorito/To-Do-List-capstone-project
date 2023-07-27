@@ -3,7 +3,7 @@
 <div class="notepad-parent">
     <div class="notepad">
         <div class="notepad-title">
-            <h1 class="notepad-title-h1">To Do list</h1>
+            <h1 class="notepad-title-h1"><%= listName %> to do list</h1>
         </div>
         <div class="notepad-task">
             <div class="notepad-item">
@@ -12,13 +12,13 @@
                     <div class="list-item">
                         <input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()">
                         <p><%= item.name %></p>
-                        <input type="hidden">
+                        <input type="hidden" value="<%= listName %>" name="listName">
                     </div>
                 </form>
                 <% }) %>
                 <form action="/" method="post" class="list-item">
                     <input type="text" name="newItem" placeholder="New Task" autocomplete="off">
-                    <button type="submit" name="list" value="<%= itemName %>">+</button>
+                    <button type="submit" name="list" value="<%= listName %>">+</button>
                 </form>
             </div>
         </div>

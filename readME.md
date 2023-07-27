@@ -13,3 +13,5 @@ I created a to do list from scratch without following any tutorials. This was a 
 5. Did CRUD (create, read and delete, no update) on the list items that are stored in the db
 6. Tested to see if everything works
 7. Deployment on render.com
+8. Debugging once online
+
